@@ -1,6 +1,7 @@
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import po.ArticlePage;
+import po.HistoryButton;
 import po.SearchPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,6 +22,10 @@ public class MainClassTest extends BaseTest {
 
     @Test(groups = {"Regression"})
     void shouldBeVisibleHistoryPage() {
+        new HistoryButton()
+                .searchHistoryButton()
+                .clickEnter();
+                assertThat(new HistoryButton().firstHeadingHistory).as("The text must be").isEqualTo("Заглавная страница: история изменений");
 //        waiter(driver, historyButton).click();
 //        var text = waiter(driver, firstHeadingHistory).getText();
 //
